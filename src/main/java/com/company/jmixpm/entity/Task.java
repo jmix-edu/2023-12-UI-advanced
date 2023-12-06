@@ -1,8 +1,10 @@
 package com.company.jmixpm.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.core.metamodel.annotation.JmixProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -37,6 +39,30 @@ public class Task {
     @JoinColumn(name = "PROJECT_ID", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Project project;
+
+    @DependsOnProperties({"project", "name"})
+    @JmixProperty
+    public String getCaption() {
+        StringBuilder sb = new StringBuilder();
+        if (project != null) {
+            sb.append("[").append(project.getName()).append("] ");
+        }
+        sb.append(name);
+
+        return sb.toString();
+    }
+
+    @DependsOnProperties({"startDate", "estimatedEfforts"})
+    @JmixProperty
+    public LocalDateTime getEndDate() {
+        if (startDate == null) {
+            return null;
+        }
+
+        int minutes = estimatedEfforts != null ? estimatedEfforts * 60 : 30;
+
+        return startDate.plusMinutes(minutes);
+    }
 
     public Project getProject() {
         return project;

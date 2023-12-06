@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @UiController("Task_.edit")
 @UiDescriptor("task-edit.xml")
 @EditedEntityContainer("taskDc")
+@MultipleOpen
+@DialogMode(modal = false)
 public class TaskEdit extends StandardEditor<Task> {
     @Autowired
     private TaskService taskService;

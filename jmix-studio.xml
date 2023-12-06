@@ -2,49 +2,6 @@
 <project version="4">
   <component name="JmixDataStoreSettingsManager">
     <moduleSettings>
-      <entry key="com.company.jmix-pm.main">
-        <ModuleSettings>
-          <option name="dataStoreOptions">
-            <map>
-              <entry key="main">
-                <value>
-                  <DataStoreSettings>
-                    <option name="supportedTypes">
-                      <option value="hsql" />
-                    </option>
-                  </DataStoreSettings>
-                </value>
-              </entry>
-            </map>
-          </option>
-        </ModuleSettings>
-      </entry>
-      <entry key="jmix-pm-ui-development-advanced.main">
-        <ModuleSettings>
-          <option name="dataStoreOptions">
-            <map>
-              <entry key="main">
-                <value>
-                  <DataStoreSettings />
-                </value>
-              </entry>
-            </map>
-          </option>
-        </ModuleSettings>
-      </entry>
-      <entry key="jmix-pm.main">
-        <ModuleSettings>
-          <option name="dataStoreOptions">
-            <map>
-              <entry key="main">
-                <value>
-                  <DataStoreSettings />
-                </value>
-              </entry>
-            </map>
-          </option>
-        </ModuleSettings>
-      </entry>
       <entry key="jmix-training-ui-development-advanced.main">
         <ModuleSettings>
           <option name="dataStoreOptionsV2">
@@ -52,7 +9,10 @@
               <entry key="main">
                 <value>
                   <DataStoreSettingsV2>
-                    <option name="nameLengthMode" value="ORACLE" />
+                    <option name="generateDdlType" value="CREATE_AND_UPDATE" />
+                    <option name="supportedTypes">
+                      <option value="postgres" />
+                    </option>
                   </DataStoreSettingsV2>
                 </value>
               </entry>
@@ -61,5 +21,19 @@
         </ModuleSettings>
       </entry>
     </moduleSettings>
+  </component>
+  <component name="JmixPluginProjectSettings">
+    <option name="savedDbProperties">
+      <list>
+        <SavedDbProperties>
+          <option name="databaseName" value="jmixpm" />
+          <option name="dbType" value="hsqlfile" />
+          <option name="dbmsVersion" />
+          <option name="host" value=".jmix/hsqldb" />
+          <option name="url" value="jdbc:hsqldb:file:.jmix/hsqldb/jmixpm" />
+          <option name="user" value="sa" />
+        </SavedDbProperties>
+      </list>
+    </option>
   </component>
 </project>
