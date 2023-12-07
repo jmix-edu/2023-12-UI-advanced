@@ -26,29 +26,35 @@ public class PostsScreen extends Screen {
 
     @Install(to = "postsDl", target = Target.DATA_LOADER)
     private List<Post> postsDlLoadDelegate(final LoadContext<Post> loadContext) {
-        return postService.fetchPosts(
-                loadContext.getQuery().getFirstResult(),
-                loadContext.getQuery().getMaxResults()
-        );
+        return postService.fetchPosts(loadContext.getQuery().getFirstResult(), loadContext.getQuery().getMaxResults());
     }
 
-    @Subscribe("postsTable.viewUserInfo")
-    public void onPostsTableViewUserInfo(final Action.ActionPerformedEvent event) {
-        Post selected = postsTable.getSingleSelected();
-        if (selected == null || selected.getUserId() == null) {
-            return;
-        }
-
-        UserInfoScreen userInfoScreen = screenBuilders.screen(this)
-                .withScreenClass(UserInfoScreen.class)
-                .build();
-        userInfoScreen.setUserId(selected.getUserId());
-        userInfoScreen.show();
-
-    }
+//    @Subscribe("postsTable.viewUserInfo")
+//    public void onPostsTableViewUserInfo(final Action.ActionPerformedEvent event) {
+//        Post selected = postsTable.getSingleSelected();
+//        if (selected == null || selected.getUserId() == null) {
+//            return;
+//        }
+//
+//        UserInfoScreen userInfoScreen = screenBuilders.screen(this).withScreenClass(UserInfoScreen.class).build();
+//        userInfoScreen.setUserId(selected.getUserId());
+//        userInfoScreen.show();
+//
+//    }
 
     @Install(to = "pagination", subject = "totalCountDelegate")
     private Integer paginationTotalCountDelegate() {
         return postService.getTotalCount();
+    }
+
+    @Install(to = "userInfoScreenFacet", subject = "screenConfigurer")
+    private void userInfoScreenFacetScreenConfigurer(final UserInfoScreen userInfoScreen) {
+        Post selected = postsTable.getSingleSelected();
+        if (selected == null || selected.getUserId() == null) {
+            return;
+        }
+        userInfoScreen.setUserId(selected.getUserId());
+
+
     }
 }
