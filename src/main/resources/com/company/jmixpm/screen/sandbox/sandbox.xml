@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://sandbox.caption">
+    <layout spacing="true" expand="quill">
+        <button id="clearQuillBtn" icon="ERASER"/>
+        <jsComponent id="quill"
+                     initFunctionName="com_company_demo_QuillTextEditor"
+                     width="400px">
+            <dependencies>
+                <dependency path="webjar://quill:dist/quill.js"/>
+                <dependency path="webjar://quill:dist/quill.snow.css"/>
+                <dependency path="vaadin://quill/quill-connector.js"/>
+            </dependencies>
+        </jsComponent>
+    </layout>
+</window>

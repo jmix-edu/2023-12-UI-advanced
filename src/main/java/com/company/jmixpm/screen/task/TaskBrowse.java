@@ -7,4 +7,12 @@ import com.company.jmixpm.entity.Task;
 @UiDescriptor("task-browse.xml")
 @LookupComponent("tasksTable")
 public class TaskBrowse extends StandardLookup<Task> {
+    @Install(to = "tasksTable", subject = "styleProvider")
+    private String tasksTableStyleProvider(final Task entity, final String property) {
+        if (entity.getEstimatedEfforts() == null
+                && ("estimatedEfforts".equals(property) || property == null)) {
+            return "no-estimated-efforts";
+        }
+        return null;
+    }
 }

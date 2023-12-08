@@ -44,7 +44,6 @@
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
-                <action id="generateData" caption="Generate Data"/>
             </actions>
             <columns>
                 <column id="name"/>
@@ -57,7 +56,6 @@
                 <button id="createBtn" action="projectsTable.create"/>
                 <button id="editBtn" action="projectsTable.edit"/>
                 <button id="removeBtn" action="projectsTable.remove"/>
-                <button id="genDataBtn" action="projectsTable.generateData"/>
             </buttonsPanel>
             <simplePagination
                     itemsPerPageDefaultValue="25"

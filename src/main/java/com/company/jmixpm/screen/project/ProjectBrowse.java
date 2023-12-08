@@ -25,17 +25,4 @@ public class ProjectBrowse extends StandardLookup<Project> {
     private CurrentAuthentication currentAuthentication;
     @Autowired
     private CollectionLoader<Project> projectsDl;
-
-    @Subscribe("projectsTable.generateData")
-    public void onProjectsTableGenerateData(final Action.ActionPerformedEvent event) {
-        List<Project> projects = new ArrayList<>(100);
-        for (int i = 0; i < 100; i++) {
-            Project project = dataManager.create(Project.class);
-            project.setManager((User) currentAuthentication.getUser());
-            project.setName("Generated №" + i);
-            projects.add(project);
-        }
-        dataManager.save(projects.toArray());
-        projectsDl.load();
-    }
 }
