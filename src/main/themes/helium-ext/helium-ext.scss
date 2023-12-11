@@ -3,6 +3,21 @@
 @mixin helium-ext {
   @include helium;
 
+  .color-field {
+    display: flex;
+    width: $v-default-field-width;
+
+    .color-field-picker > .v-button {
+      border: 1px solid var(--border-color);
+      border-top-right-radius: $v-border-radius;
+      border-bottom-right-radius: $v-border-radius;
+    }
+
+    .v-caption-color-field-value {
+      display: none;
+    }
+  }
+
 .v-table-row.no-estimated-efforts{
   color: var(--error-color);
 }

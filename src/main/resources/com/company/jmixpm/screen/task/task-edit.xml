@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:app="http://schemas.company.com/demo/0.1/app-ui-components.xsd"
         caption="msg://taskEdit.caption"
         focusComponent="form">
     <data>
@@ -45,7 +46,8 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <field id="colorField" property="color" width="AUTO"/>
+                <app:colorField id="colorField" property="color" width="100%"
+                stylename="color-field"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
